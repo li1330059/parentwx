@@ -1,62 +1,89 @@
-/**index.wxss**/
-page {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
+page{
+    background-color: rgb(245, 245, 245);
 }
-.scrollarea {
-  flex: 1;
-  overflow-y: hidden;
-}
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .main-content {
+    padding: 40rpx;
+  }
+  
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+  }
+  
+  .drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 60vw;
+    height: 100%;
+    background-color: #fff;
+    z-index: 100;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  
+  .drawer-content {
+    padding: 40rpx;
+  }
+  
+  .drawer-show {
+    transform: translateX(0%);
+  }
 
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #aaa;
-  width: 80%;
-}
+  .student-item{
+    width: 100%;
+    display: flex;
+    padding: 20rpx;
+    border-radius: 10rpx;
+    align-items: center;
+    box-sizing: border-box;
+    justify-content: center;
+    border: 1px solid #ccc;
+    margin-bottom: 30rpx;
+  }
+  .student-item-act{
+    background-color: rgb(100, 45, 113);
+    color: #fff;
+  }
 
-.userinfo-avatar {
-  overflow: hidden;
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
-
-.usermotto {
-  margin-top: 200px;
-}
-
-.avatar-wrapper {
-  padding: 0;
-  width: 56px !important;
-  border-radius: 8px;
-  margin-top: 40px;
-  margin-bottom: 40px;
-}
-
-.avatar {
-  display: block;
-  width: 56px;
-  height: 56px;
-}
-
-.nickname-wrapper {
-  display: flex;
-  width: 100%;
-  padding: 16px;
-  box-sizing: border-box;
-  border-top: .5px solid rgba(0, 0, 0, 0.1);
-  border-bottom: .5px solid rgba(0, 0, 0, 0.1);
-  color: black;
-}
-
-.nickname-label {
-  width: 105px;
-}
-
-.nickname-input {
-  flex: 1;
-}
+  .addbtn{
+      width: 100%;
+      display: flex;
+      padding: 20rpx;
+      border-radius: 10rpx;
+      align-items: center;
+      box-sizing: border-box;
+      justify-content: center;
+      background-color: rgb(100, 45, 113);
+      color: #fff;
+  }
+  .qr{
+      width: 36rpx;
+      height: 36rpx;
+      margin-right: 15rpx;
+  }
+  .avator{
+      display: flex;
+      align-items: center;
+      font-size: 36rpx;
+  }
+  .avator-img{
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 100%;
+    margin-right: 10rpx;
+    font-weight: 500;
+  }
+  
