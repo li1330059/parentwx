@@ -1,8 +1,15 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/analysis/index"
   ],
+  "requiredPrivateInfos": ["getLocation"],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示" 
+    }
+  },
+
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "夺分派家长控制台",

@@ -3,6 +3,6 @@
   "projectname": "parentwx",
   "setting": {
     "compileHotReLoad": true,
-    "urlCheck": false
+    "urlCheck": true
   }
 }

@@ -6,7 +6,8 @@ Page({
     drawerAnimation: null,
     webSocketTask: null,
     childList:[],
-    selectedItem:""
+    selectedItem:"",
+    imageUrl:'https://view.duofenpai.com/image/default/38591234A8DF45659D499813ECB61286-6-2.jpg'
   },
   onLoad(){
     let that = this;
@@ -20,7 +21,7 @@ Page({
               console.log(res.code)
               //发起网络请求
                 wx.request({
-                    url: 'https://vid.duofenpai.com/v1/external/info',
+                    url: 'https://vid.duofenpai.com:15002/v1/external/info',
                     method:'POST',
                     header: {
                         'Content-Type': 'application/json',
@@ -141,9 +142,38 @@ Page({
       this.socketTask.send({
         data: name,
       });
+      if(name == 'position'){
+        this.getMap()
+      }else{
+        wx.previewImage({
+          urls: [this.data.imageUrl]
+        })
+      }
       console.log('触发消息已发送');
     } else {
       console.log('WebSocket 未连接');
     }
   },
+  getMap() {
+    wx.getLocation({
+      type: 'gcj02', //返回可以用于wx.openLocation的经纬度
+      success (res) {
+        const latitude = res.latitude
+        const longitude = res.longitude
+        wx.openLocation({
+          latitude,
+          longitude,
+          scale: 18
+        })
+      },
+      fail(res){
+        console.dir(res)
+      }
+     })
+  },
+  analysis(){
+    wx.navigateTo({
+      url: '/pages/analysis/index',
+    })
+  }
 })

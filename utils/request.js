@@ -4,7 +4,7 @@ const request = (url, method, data = {}, customHeaders = {}) => {
   
     return new Promise((resolve, reject) => {
       wx.request({
-        url: 'https://vid.duofenpai.com'+url,
+        url: 'https://vid.duofenpai.com:15002'+url,
         method: method,
         data: data,
         header: {

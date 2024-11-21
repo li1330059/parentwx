@@ -1,15 +1,30 @@
 page{
     background-color: rgb(245, 245, 245);
 }
+.logo{
+  width: 250rpx;
+  height: 250rpx;
+}
+.logo-cont{
+  display: flex;
+  justify-content: center;
+  margin-top: 150rpx;
+}
 .container {
     position: relative;
     width: 100%;
     height: 100%;
     overflow: hidden;
+    padding: 0;
   }
   
   .main-content {
+    width: 100vw;
+    height: 100vh;
     padding: 40rpx;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
   }
   
   .overlay {
@@ -86,4 +101,78 @@ page{
     margin-right: 10rpx;
     font-weight: 500;
   }
-  
+  .btn-group{
+    padding: 25rpx 15rpx;
+    border-radius: 20rpx;
+    background-color: #fff;
+    display: flex;
+    margin-top: auto;
+    margin-bottom: 50rpx;
+    flex-wrap: wrap;
+  }
+  .btn{
+    width: calc(50% - 30rpx);
+    height: 190rpx;
+    margin: 15rpx;
+    position: relative;
+    border-radius: 20rpx;
+    box-sizing: border-box;
+  }
+  .btn1{
+    background-color: #4d85f1;
+  }
+  .btn1 .btn-icon{
+    width: 70rpx;
+    height: 70rpx;
+    right: 26rpx;
+    bottom: 15rpx;
+  }
+  .btn2{
+    background-color: #f2b959;
+  }
+  .btn2 .btn-icon{
+    width: 75rpx;
+    height: 60rpx;
+    right: 26rpx;
+    bottom: 20rpx;
+  }
+  .btn3{
+    background-color: #ea88b8;
+  }
+  .btn3 .btn-icon{
+    width: 75rpx;
+    height: 75rpx;
+    right: 26rpx;
+    bottom: 18rpx;
+  }
+  .btn4{
+    background-color: #6c82b1;
+  }
+  .btn4 .btn-icon{
+    width: 75rpx;
+    height: 75rpx;
+    right: 26rpx;
+    bottom: 10rpx;
+  }
+  .btn-label{
+    position: absolute;
+    color: #fff;
+    font-size: 36rpx;
+    font-weight: 500;
+    left: 30rpx;
+    top: 30rpx;
+  }
+  .btn-icon{
+    position: absolute;
+  }
+  .noChild{
+    font-size: 28rpx;
+    width: 180rpx;
+    height: 80rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10rpx;
+    background-color: rgb(100, 45, 113);
+    color: #fff;
+  }

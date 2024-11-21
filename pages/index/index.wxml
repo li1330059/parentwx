@@ -16,13 +16,31 @@
   
   <!-- 主内容 -->
   <view class="main-content">
-    <view class="avator" bindtap="openDrawer">
+    <view wx:if="{{selectedItem}}" class="avator" bindtap="openDrawer">
         <image class="avator-img" src="{{selectedItem.avatar}}" mode=""/>
         <view bindtap="openDrawer">{{selectedItem.userName}}</view>
     </view>
-    <button bindtap="sendRequest" data-name="capture">截图</button>
-    <button bindtap="sendRequest" data-name="camera">拍照</button>
-    <button bindtap="sendRequest" data-name="position">定位</button>
-    <button bindtap="analysis">数据分析</button>
+    <view class="noChild" wx:else bindtap="openDrawer">绑定学生</view>
+    <view class="logo-cont">
+      <image class="logo" src="/assets/logo.png" mode=""/>
+    </view>
+    <view class="btn-group">
+      <view class="btn btn1" bindtap="sendRequest" data-name="capture">
+        <view class="btn-label">远程截屏</view>
+        <image class="btn-icon" src="/assets/capture.png" mode=""/>
+      </view>
+      <view class="btn btn2" bindtap="sendRequest" data-name="camera">
+        <view class="btn-label">远程拍照</view>
+        <image class="btn-icon" src="/assets/camera.png" mode=""/>
+      </view>
+      <view class="btn btn3" bindtap="sendRequest" data-name="position">
+        <view class="btn-label">远程定位</view>
+        <image class="btn-icon" src="/assets/position.png" mode=""/>
+      </view>
+      <view class="btn btn4" bindtap="analysis">
+        <view class="btn-label">学习数据</view>
+        <image class="btn-icon" src="/assets/analysis.png" mode=""/>
+      </view>
+    </view>
   </view>
 </view>
