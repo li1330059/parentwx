@@ -6,8 +6,7 @@ Page({
     drawerAnimation: null,
     webSocketTask: null,
     childList:[],
-    selectedItem:"",
-    imageUrl:'https://view.duofenpai.com/image/default/38591234A8DF45659D499813ECB61286-6-2.jpg'
+    selectedItem:""
   },
   onLoad(){
     let that = this;
@@ -67,18 +66,36 @@ Page({
     const socketTask = wx.connectSocket({
       url: 'wss://vid.duofenpai.com:15002/websocket?id='+wx.getStorageSync('openid'),  // 替换为实际地址
     });
+    let timer;
     console.log(socketTask)
     socketTask.onOpen(() => {
       console.log('WebSocket 已连接');
+      //心跳机制
+      timer = setInterval(() => {
+            if (this.data.socketOpen) {
+                socketTask.send({
+                    data: JSON.stringify({ type: 'ping-tinyapp', timestamp: Date.now() }),
+                });
+            }
+        }, 30000); // 每 30 秒发送一次心跳
       this.setData({ socketOpen: true });
     });
 
     socketTask.onMessage((message) => {
-      console.log('收到消息:', message.data);
+        wx.hideLoading();
+        console.log('收到消息:', message.data);
+        if(this.data.sendType == 'position'){
+            this.getMap(JSON.parse(message.data))
+        }else{
+            wx.previewImage({
+                urls: [message.data]
+            })
+        }
     });
 
     socketTask.onClose((message) => {
       console.log('WebSocket 已关闭', message);
+      clearInterval(timer); // 停止心跳
       this.setData({ socketOpen: false });
     });
 
@@ -136,40 +153,39 @@ Page({
     this.closeDrawer();
   },
   sendRequest(event) {
+    wx.showLoading();
     const { name } = event.currentTarget.dataset; // 通过 dataset 获取参数
+    this.setData({
+        sendType:name
+    })
+    request('/v1/external/web/opera', 'POST', {
+        userCode: this.data.selectedItem.code,
+        type: name
+    })
+    .then((res) => {
+      console.log('POST 请求成功：', res);
+    })
+    .catch((error) => {
+      wx.showLoading();
+      console.error('POST 请求失败：', error);
+    });
     console.dir(name)
-    if (this.data.socketOpen) {
-      this.socketTask.send({
-        data: name,
-      });
-      if(name == 'position'){
-        this.getMap()
-      }else{
-        wx.previewImage({
-          urls: [this.data.imageUrl]
-        })
-      }
-      console.log('触发消息已发送');
-    } else {
-      console.log('WebSocket 未连接');
-    }
+    // if (this.data.socketOpen) {
+    //   this.socketTask.send({
+    //     data: name,
+    //   });
+    //   console.log('触发消息已发送');
+    // } else {
+    //   console.log('WebSocket 未连接');
+    // }
   },
-  getMap() {
-    wx.getLocation({
-      type: 'gcj02', //返回可以用于wx.openLocation的经纬度
-      success (res) {
-        const latitude = res.latitude
-        const longitude = res.longitude
-        wx.openLocation({
-          latitude,
-          longitude,
-          scale: 18
-        })
-      },
-      fail(res){
-        console.dir(res)
-      }
-     })
+  getMap(item) {
+      console.dir(item)
+      wx.openLocation({
+        latitude:item.lat,
+        longitude:item.lng,
+        scale: 18
+      })
   },
   analysis(){
     wx.navigateTo({
