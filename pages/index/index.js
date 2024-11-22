@@ -84,7 +84,12 @@ Page({
     socketTask.onMessage((message) => {
         wx.hideLoading();
         console.log('收到消息:', message.data);
-        if(this.data.sendType == 'position'){
+        if(message.data == '12306'){
+          wx.showToast({
+            title: '学生已离线',
+            icon:'error'
+          })
+        }else if(this.data.sendType == 'position'){
             this.getMap(JSON.parse(message.data))
         }else{
             wx.previewImage({

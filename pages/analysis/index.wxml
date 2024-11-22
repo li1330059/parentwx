@@ -15,8 +15,8 @@
 
   <view class="tab-cont">
     <view class="tab {{actTab == 1 ? 'tab-act' : ''}}" bindtap="selectTab" data-item="1">昨日</view>
-    <view class="tab {{actTab == 2 ? 'tab-act' : ''}}" bindtap="selectTab" data-item="2">7天</view>
-    <view class="tab {{actTab == 3 ? 'tab-act' : ''}}" bindtap="selectTab" data-item="3">30天</view>
+    <view class="tab {{actTab == 2 ? 'tab-act' : ''}}" bindtap="selectTab" data-item="2">上周</view>
+    <view class="tab {{actTab == 3 ? 'tab-act' : ''}}" bindtap="selectTab" data-item="3">上月</view>
   </view>
   <!-- 学习数据 -->
   <view class="section">

@@ -196,11 +196,8 @@ Page({
       console.log('POST 请求成功：', res);
       if(res.data){
         this.setData({
-          list:res.data
-        })
-      }else{
-        this.setData({
-          list:this.data.data.yesterdayInfo
+          data:res.data,
+          list:res.data.yesterdayInfo
         })
       }
     })
