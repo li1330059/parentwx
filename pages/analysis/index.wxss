@@ -1,1 +1,150 @@
-/* pages/analysis/index.wxss */
+/* 页面整体容器 */
+.container {
+  padding: 20rpx;
+  background-color: #f8f8f8;
+  min-height: 100vh;
+  justify-content: flex-start;
+}
+
+/* 用户信息 */
+.user-info {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding: 30rpx;
+  background-color: #ffffff;
+  margin: 0 20rpx;
+  box-sizing: border-box;
+  border-radius: 16rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 10rpx 20rpx rgba(0, 0, 0, 0.05);
+}
+.user-avatar{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  margin-bottom: 20rpx;
+}
+
+.user-details {
+  border-left: 1px solid #ccc;
+  margin-left: 30rpx;
+  padding-left: 30rpx;
+}
+
+.name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.phone, .details, .city {
+  font-size: 28rpx;
+  color: #666666;
+  margin-bottom: 7rpx;
+}
+
+/* 学习数据分块 */
+/* 学习数据分块 */
+.section {
+  margin-bottom: 30rpx;
+  background-color: #ffffff;
+  border-radius: 16rpx;
+  max-height: 960rpx;
+  overflow: auto;
+  box-shadow: 0 10rpx 20rpx rgba(0, 0, 0, 0.05);
+  margin: 20rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  color: #333333;
+  margin-bottom: 20rpx;
+  border-left: 6rpx solid #409eff;
+  padding-left: 10rpx;
+}
+
+/* 表格容器 */
+.table-container {
+  margin-top: 20rpx;
+  border: 1rpx solid #eeeeee;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+
+/* 表头样式 */
+.table-header {
+  display: flex;
+  background-color: #f5f5f5;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.table-header-item {
+  flex: 1;
+  text-align: center;
+  padding: 10rpx;
+  border-right: 1rpx solid #eeeeee;
+}
+
+.table-header-item:last-child {
+  border-right: none;
+}
+
+/* 表格行样式 */
+.table-row {
+  display: flex;
+  font-size: 26rpx;
+  color: #666666;
+}
+
+.table-row-item {
+  flex: 1;
+  text-align: center;
+  padding: 10rpx;
+  border-top: 1rpx solid #eeeeee;
+  border-right: 1rpx solid #eeeeee;
+}
+
+.table-row-item:last-child {
+  border-right: none;
+}
+
+.table-row:last-child .table-row-item {
+  border-bottom: none;
+}
+.tab-cont{
+  display: flex;
+  width: 100%;
+}
+.tab{
+  flex: 1;
+  display: flex;
+  padding: 20rpx;
+  border-radius: 10rpx;
+  align-items: center;
+  box-sizing: border-box;
+  justify-content: center;
+  border: 1px solid #ccc;
+  margin: 10rpx;
+}
+.tab-act{
+  background-color: rgb(100, 45, 113);
+  color: #fff;
+}
+
+
+

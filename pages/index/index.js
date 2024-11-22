@@ -120,9 +120,10 @@ Page({
             childList: res.data.childVos,
         });
         if(res.data.childVos&&res.data.childVos.length>0){
-            this.setData({
-              selectedItem:res.data.childVos[0],
-            }); // 更新选中状态
+          wx.setStorageSync('userCode', res.data.childVos[0].code)
+          this.setData({
+            selectedItem:res.data.childVos[0],
+          }); // 更新选中状态
         }
       console.log('POST 请求成功：', res);
     })

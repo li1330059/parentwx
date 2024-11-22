@@ -1,2 +1,72 @@
-<!--pages/analysis/index.wxml-->
-<text>pages/analysis/index.wxml</text>
+<view class="container">
+  <!-- 用户信息展示 -->
+  <view class="user-info">
+    <view class="user-avatar">
+      <image class="avatar" src="{{data.avatar}}" alt="用户头像" />
+      <view class="name">{{data.userName}}</view>
+    </view>
+    <view class="user-details">
+      <view class="phone">手机: {{data.phone}}</view>
+      <view class="details">学校: {{data.school}}</view>
+      <view class="details">班级: {{data.gradeClass}}</view>
+      <view class="city">城市: {{data.city}}</view>
+    </view>
+  </view>
+
+  <view class="tab-cont">
+    <view class="tab {{actTab == 1 ? 'tab-act' : ''}}" bindtap="selectTab" data-item="1">昨日</view>
+    <view class="tab {{actTab == 2 ? 'tab-act' : ''}}" bindtap="selectTab" data-item="2">7天</view>
+    <view class="tab {{actTab == 3 ? 'tab-act' : ''}}" bindtap="selectTab" data-item="3">30天</view>
+  </view>
+  <!-- 学习数据 -->
+  <view class="section">
+  <view class="section-title">昨日学习数据
+    <text>学习时长：{{list.learnDate}}分钟</text>
+  </view>
+
+  <!-- 薄弱点表格 -->
+  <view class="table-container">
+    <view class="table-header">
+      <view class="table-header-item">薄弱点名称</view>
+      <view class="table-header-item">出现频率</view>
+    </view>
+    <block wx:for="{{list.weaknessList}}" wx:key="index">
+      <view class="table-row">
+        <view class="table-row-item">{{item.pointName}}</view>
+        <view class="table-row-item">{{item.frequency}} 次</view>
+      </view>
+    </block>
+  </view>
+
+  <!-- 改进点表格 -->
+  <view class="table-container">
+    <view class="table-header">
+      <view class="table-header-item">改进点名称</view>
+      <view class="table-header-item">出现频率</view>
+    </view>
+    <block wx:for="{{list.cancelWeaknessList}}" wx:key="index">
+      <view class="table-row">
+        <view class="table-row-item">{{item.pointName}}</view>
+        <view class="table-row-item">{{item.frequency}} 次</view>
+      </view>
+    </block>
+  </view>
+
+  <!-- 考试数据表格 -->
+  <view class="table-container">
+    <view class="table-header">
+      <view class="table-header-item">考试名称</view>
+      <view class="table-header-item">科目</view>
+      <view class="table-header-item">排名</view>
+    </view>
+    <block wx:for="{{list.examinationList}}" wx:key="index">
+      <view class="table-row">
+        <view class="table-row-item">{{item.examName}}</view>
+        <view class="table-row-item">{{item.subject==1?'数学':'英语'}}</view>
+        <view class="table-row-item">{{item.ranking}}</view>
+      </view>
+    </block>
+  </view>
+</view>
+
+</view>
