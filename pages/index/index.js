@@ -159,7 +159,10 @@ Page({
     this.closeDrawer();
   },
   sendRequest(event) {
-    wx.showLoading();
+    wx.showLoading({
+      title:'连接设备中',
+      mask: true // 是否显示遮罩层，默认为false
+    });
     const { name } = event.currentTarget.dataset; // 通过 dataset 获取参数
     this.setData({
         sendType:name
@@ -172,7 +175,10 @@ Page({
       console.log('POST 请求成功：', res);
     })
     .catch((error) => {
-      wx.showLoading();
+      wx.showLoading({
+        title:'连接设备中',
+        mask: true // 是否显示遮罩层，默认为false
+      });
       console.error('POST 请求失败：', error);
     });
     console.dir(name)
