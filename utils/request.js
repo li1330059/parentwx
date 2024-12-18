@@ -7,6 +7,7 @@ const request = (url, method, data = {}, customHeaders = {}) => {
         url: 'https://vid.duofenpai.com:15002'+url,
         method: method,
         data: data,
+        timeout: 30000,
         header: {
           'Content-Type': 'application/json', // 默认头部
           'userCode': openid, // 携带 openid
@@ -21,6 +22,9 @@ const request = (url, method, data = {}, customHeaders = {}) => {
           }
         },
         fail(err) {
+          wx.showToast({
+            title: '连接超时，请重试',
+          })
           console.error('请求失败：', err);
           reject(err);
         }
